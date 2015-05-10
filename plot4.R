@@ -10,6 +10,9 @@ elec <- subset(elec, Date == "1/2/2007" | Date == "2/2/2007")
 ## Create date and time column
 dateTime <- strptime(paste(elec$Date, elec$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
 
+## Open png device
+png(width=480, height=480, file = "plot4.png")
+
 ## Setup so we have a 2x2 grid of charts
 par(mfrow = c(2,2))
 
@@ -21,15 +24,13 @@ axis
 plot(dateTime, elec$Voltage,type="l",ylab="Voltage",xlab="datetime",cex.lab=0.75)
 
 ## Create chart 3
-with(elec, plot(dateTime, elec$Sub_metering_1,type="n",ylab="Energy sub metering",xlab="",cex.lab=0.75))
+with(elec, plot(dateTime, elec$Sub_metering_1,type="n",ylab="Energy sub metering",xlab=""))
 with(elec, lines(dateTime, elec$Sub_metering_1))
 with(elec, lines(dateTime, elec$Sub_metering_2,col="red"))
 with(elec, lines(dateTime, elec$Sub_metering_3,col="blue"))
-legend("topright", lty=1, cex=0.3,col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+legend("topright", lty=1, cex=0.5, pt.cex=0.3, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
 ##Create chart 4
 plot(dateTime, elec$Global_reactive_power,type="l",ylab="Global_reactive_power",xlab="datetime",cex.lab=0.75)
 
-## Save as png
-dev.copy(png, file="plot4.png")
 dev.off()
