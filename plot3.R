@@ -16,5 +16,5 @@ with(elec, plot(dateTime, elec$Sub_metering_1,type="n",ylab="Energy sub metering
 with(elec, lines(dateTime, elec$Sub_metering_1))
 with(elec, lines(dateTime, elec$Sub_metering_2,col="red"))
 with(elec, lines(dateTime, elec$Sub_metering_3,col="blue"))
-legend("topright", lty=1, cex=0.8, pt.cex=0.5, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+legend("topright", lty=1, cex=0.8, pt.cex=0.3, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 dev.off()
